@@ -644,29 +644,6 @@ Lazy chunk files
 
 ---
 
-## Evidencias sugeridas
-
-Para el informe final se deben capturar:
-
-1. Pantalla de Login.
-2. Mensaje de credenciales incorrectas.
-3. Dashboard del administrador.
-4. Gestión de usuarios.
-5. Creación, edición y eliminación de usuarios.
-6. Gestión de cursos.
-7. Creación, edición y eliminación de cursos.
-8. Profesor sin acceso a Usuarios.
-9. Profesor editando solo sus cursos.
-10. Estudiante visualizando cursos en modo lectura.
-11. JWT almacenado en Local Storage.
-12. Encabezado `Authorization: Bearer ...`.
-13. Token manipulado y redirección al Login.
-14. Terminal con `Lazy chunk files`.
-15. Repositorio de GitHub.
-16. README visible en GitHub.
-
----
-
 ## Seguridad y consideraciones
 
 - El JWT está firmado desde la API.
