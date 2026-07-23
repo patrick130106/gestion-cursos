@@ -1,0 +1,96 @@
+<div class="container py-4">
+
+  <div class="mb-4">
+
+    <h2>
+      Bienvenido, {{ usuario?.nombre }}
+    </h2>
+
+    <p class="text-muted">
+      Panel principal del sistema de gestión académica.
+    </p>
+
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-md-6 col-xl-4">
+
+      <div class="card shadow-sm border-0 h-100">
+
+        <div class="card-body">
+
+          <h5 class="card-title">
+            Mi sesión
+          </h5>
+
+          <p class="mb-1">
+            <strong>Correo:</strong>
+            {{ usuario?.correo }}
+          </p>
+
+          <p class="mb-0">
+            <strong>Rol:</strong>
+
+            <span class="badge text-bg-primary text-capitalize">
+              {{ usuario?.rol }}
+            </span>
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    @if (esAdmin()) {
+
+      <div class="col-md-6 col-xl-4">
+
+        <div class="card shadow-sm border-0 h-100">
+
+          <div class="card-body">
+
+            <h5 class="card-title">
+              Gestión de usuarios
+            </h5>
+
+            <p class="card-text">
+              Registrar, editar y eliminar usuarios.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+
+    @if (esAdmin() || esProfesor()) {
+
+      <div class="col-md-6 col-xl-4">
+
+        <div class="card shadow-sm border-0 h-100">
+
+          <div class="card-body">
+
+            <h5 class="card-title">
+              Gestión de cursos
+            </h5>
+
+            <p class="card-text">
+              Registrar, editar y eliminar cursos.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

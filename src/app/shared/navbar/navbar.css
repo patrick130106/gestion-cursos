@@ -1,0 +1,7 @@
+.navbar {
+  min-height: 56px;
+}
+
+.navbar-brand {
+  cursor: pointer;
+}

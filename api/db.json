@@ -1,0 +1,51 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Administrador",
+      "correo": "admin@gmail.com",
+      "password": "123456",
+      "rol": "admin"
+    },
+    {
+      "id": "2",
+      "nombre": "Juan Profesor",
+      "correo": "profesor@gmail.com",
+      "password": "123456",
+      "rol": "profesor"
+    },
+    {
+      "id": "3",
+      "nombre": "Maria Estudiante",
+      "correo": "estudiante@gmail.com",
+      "password": "123456",
+      "rol": "estudiante"
+    }
+  ],
+  "cursos": [
+    {
+      "id": 1,
+      "nombre": "Angular",
+      "descripcion": "Desarrollo Web",
+      "creadoPor": 1
+    },
+    {
+      "id": "2",
+      "nombre": "Base de Datos",
+      "descripcion": "SQL"
+    },
+    {
+      "id": 3,
+      "nombre": "base de datos",
+      "descripcion": "SQL WORKBENCH",
+      "creadoPor": "1"
+    },
+    {
+      "id": 4,
+      "nombre": "prueba",
+      "descripcion": "sdsdsd",
+      "creadoPor": "2"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

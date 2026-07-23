@@ -1,0 +1,323 @@
+<div class="container py-4">
+
+  <div
+    class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+
+    <div>
+
+      <h2 class="mb-1">
+        Gestión de cursos
+      </h2>
+
+      <p class="text-muted mb-0">
+        Cursos registrados: {{ cursos().length }}
+      </p>
+
+    </div>
+
+    <div class="d-flex gap-2">
+
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        (click)="cargarCursos()">
+        Recargar
+      </button>
+
+      @if (puedeCrear()) {
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="nuevoCurso()">
+
+    Nuevo curso
+
+  </button>
+
+}
+
+    </div>
+
+  </div>
+
+  @if (mensaje()) {
+
+    <div class="alert alert-success alert-dismissible">
+
+      {{ mensaje() }}
+
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Cerrar"
+        (click)="mensaje.set('')">
+      </button>
+
+    </div>
+
+  }
+
+  @if (error()) {
+
+    <div class="alert alert-danger alert-dismissible">
+
+      {{ error() }}
+
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Cerrar"
+        (click)="error.set('')">
+      </button>
+
+    </div>
+
+  }
+
+  @if (mostrarFormulario()) {
+
+    <div class="card shadow-sm mb-4">
+
+      <div class="card-header">
+
+        <strong>
+
+          {{ editandoId() === null
+            ? 'Registrar curso'
+            : 'Editar curso' }}
+
+        </strong>
+
+      </div>
+
+      <div class="card-body">
+
+        <form
+          #cursoForm="ngForm"
+          (ngSubmit)="guardarCurso(cursoForm)"
+          novalidate>
+
+          <div class="row g-3">
+
+            <div class="col-md-6">
+
+              <label
+                for="nombre"
+                class="form-label">
+
+                Nombre del curso
+
+              </label>
+
+              <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                class="form-control"
+                required
+                minlength="3"
+                [(ngModel)]="formulario.nombre"
+                #nombre="ngModel">
+
+              @if (nombre.invalid && nombre.touched) {
+
+                <small class="text-danger">
+
+                  Ingresa un nombre de al menos
+                  3 caracteres.
+
+                </small>
+
+              }
+
+            </div>
+
+            <div class="col-md-6">
+
+              <label
+                for="descripcion"
+                class="form-label">
+
+                Descripción
+
+              </label>
+
+              <textarea
+                id="descripcion"
+                name="descripcion"
+                class="form-control"
+                rows="3"
+                required
+                minlength="5"
+                [(ngModel)]="formulario.descripcion"
+                #descripcion="ngModel">
+              </textarea>
+
+              @if (
+                descripcion.invalid &&
+                descripcion.touched
+              ) {
+
+                <small class="text-danger">
+
+                  Ingresa una descripción de al menos
+                  5 caracteres.
+
+                </small>
+
+              }
+
+            </div>
+
+          </div>
+
+          <div
+            class="d-flex justify-content-end gap-2 mt-4">
+
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              [disabled]="guardando()"
+              (click)="cancelarFormulario(cursoForm)">
+
+              Cancelar
+
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="
+                cursoForm.invalid ||
+                guardando()
+              ">
+
+              @if (guardando()) {
+
+                Guardando...
+
+              } @else {
+
+                Guardar curso
+
+              }
+
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  }
+
+  @if (cargando()) {
+
+    <div class="alert alert-info">
+      Cargando cursos...
+    </div>
+
+  } @else if (cursos().length === 0) {
+
+    <div class="alert alert-warning">
+      No existen cursos registrados.
+    </div>
+
+  } @else {
+
+    <div class="table-responsive">
+
+      <table
+        class="table table-striped table-bordered align-middle shadow-sm">
+
+        <thead class="table-dark">
+
+          <tr>
+
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th class="text-center">
+              Acciones
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          @for (curso of cursos(); track curso.id) {
+
+            <tr>
+
+              <td>
+                {{ curso.id }}
+              </td>
+
+              <td>
+                {{ curso.nombre }}
+              </td>
+
+              <td>
+                {{ curso.descripcion }}
+              </td>
+
+              <td class="text-center">
+
+                @if (puedeEditar(curso)) {
+
+  <button
+    type="button"
+    class="btn btn-warning btn-sm me-2"
+    (click)="editarCurso(curso)">
+
+    Editar
+
+  </button>
+
+}
+
+@if (puedeEliminar()) {
+
+  <button
+    type="button"
+    class="btn btn-danger btn-sm"
+    (click)="eliminarCurso(curso)">
+
+    Eliminar
+
+  </button>
+
+}
+
+@if (
+  !puedeEditar(curso) &&
+  !puedeEliminar()
+) {
+
+  <span class="badge text-bg-secondary">
+    Solo lectura
+  </span>
+
+}
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  }
+
+</div>

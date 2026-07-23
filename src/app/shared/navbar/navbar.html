@@ -1,0 +1,36 @@
+<nav class="navbar navbar-dark bg-primary px-3 shadow-sm">
+
+  <a
+    class="navbar-brand fw-bold"
+    routerLink="/dashboard">
+
+    Sistema Académico
+
+  </a>
+
+  <div class="d-flex align-items-center gap-3">
+
+    <div class="text-white text-end d-none d-sm-block">
+
+      <div class="fw-semibold">
+        {{ usuario?.nombre }}
+      </div>
+
+      <small class="text-capitalize">
+        {{ usuario?.rol }}
+      </small>
+
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-light btn-sm"
+      (click)="cerrarSesion()">
+
+      Cerrar sesión
+
+    </button>
+
+  </div>
+
+</nav>

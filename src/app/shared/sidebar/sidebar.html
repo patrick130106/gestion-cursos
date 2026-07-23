@@ -1,0 +1,64 @@
+<nav class="sidebar p-3">
+
+  <div class="text-white mb-4">
+
+    <small class="text-secondary">
+      MENÚ PRINCIPAL
+    </small>
+
+  </div>
+
+  <div class="nav flex-column gap-2">
+
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      class="nav-link">
+
+      Dashboard
+
+    </a>
+
+    @if (esAdmin()) {
+
+      <a
+        routerLink="/usuarios"
+        routerLinkActive="active"
+        class="nav-link">
+
+        Usuarios
+
+      </a>
+
+    }
+
+      <a
+        routerLink="/cursos"
+        routerLinkActive="active"
+        class="nav-link">
+
+        Cursos
+
+      </a>
+
+  </div>
+
+  <hr class="border-secondary">
+
+  <div class="user-info">
+
+    <small class="text-secondary">
+      Sesión iniciada como:
+    </small>
+
+    <div class="text-white fw-semibold mt-1">
+      {{ usuario?.nombre }}
+    </div>
+
+    <span class="badge text-bg-primary text-capitalize mt-2">
+      {{ usuario?.rol }}
+    </span>
+
+  </div>
+
+</nav>
