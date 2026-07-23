@@ -329,12 +329,6 @@ También realiza las siguientes acciones:
 http://localhost:3000
 ```
 
-### URL pública
-
-```text
-PENDIENTE_DE_COLOCAR_URL_PUBLICA_DE_LA_API
-```
-
 ### Comprobar que la API funciona
 
 ```text
